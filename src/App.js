@@ -1,12 +1,19 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
+import About from "./components/About";
+import { Routes, Route } from "react-router-dom";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   return (
     <div className="App">
-      <h1>Soy un h1</h1>
       <NavBar />
-      <ItemListContainer greeting="Hola User" />
+      <Routes>
+        <Route path="/" element={<ItemListContainer greeting="Hola User" />} />
+        <Route path="item/:id" element={<ItemDetailContainer />} />
+        <Route path="about" element={<About />} />
+      </Routes>
     </div>
   );
 }
