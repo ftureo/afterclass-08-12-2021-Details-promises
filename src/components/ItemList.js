@@ -1,7 +1,7 @@
 import Item from "./Item";
 
 const ItemList = ({ products }) => {
-  console.log("Products en ItemList", products);
+  console.log("Los products", products);
   return (
     <div>
       {products.map((product) => {

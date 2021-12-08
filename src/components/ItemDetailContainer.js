@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
-import getProducts from "../services/handMadePromise";
-import { useParams } from "react-router-dom";
+import getOneProduct from "../services/getOneProduct";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState([]);
   console.log("item", item);
-  const { id } = useParams();
-  console.log("Id de useParams", id);
-  console.log("Tipo de Dato ID", typeof id);
 
   useEffect(() => {
-    getProducts.then((res) => {
-      setItem(res.find((prod) => prod.id === parseInt(id)));
-    });
-  }, [id]);
-  return <ItemDetail item={item} />;
+    getOneProduct.then((res) => setItem(res)).catch((err) => console.log(err));
+  });
+
+  return (
+    <div>
+      <h1>ACA VA EL ITEMDETAILCONTAINER</h1>
+      <ItemDetail item={item} />
+    </div>
+  );
 };
 export default ItemDetailContainer;
